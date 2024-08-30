@@ -1,16 +1,22 @@
 package com.example.lab1_2
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.lab1_2.databinding.ActivitySecondActivityBinding
 
 class SecondActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySecondActivityBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_second_activity)
 
+        // Inflate the layout using view binding
+        binding = ActivitySecondActivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // Get the button text passed from MainActivity and set it to the TextView
         val buttonText = intent.getStringExtra("BUTTON_TEXT")
-        val textView = findViewById<TextView>(R.id.textView)
-        textView.text = buttonText
+        binding.textView.text = buttonText
     }
 }
